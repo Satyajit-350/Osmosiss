@@ -22,6 +22,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/sharp_circle.xml" value="0.1715" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/sharp_rect_001.xml" value="0.1675" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_course.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_instructor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_intro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
@@ -43,6 +44,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_recruiter_post.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_wish_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/items.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/no_internet.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/post_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/top_search_items.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />

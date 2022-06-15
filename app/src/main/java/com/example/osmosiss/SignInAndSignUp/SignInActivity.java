@@ -48,6 +48,14 @@ public class SignInActivity extends AppCompatActivity {
         dialog.setTitle("SignIn");
         dialog.setMessage("SignIn to your Account");
 
+        binding.forgotPassText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignInActivity.this,ForgotPasswordActivity.class);
+                startActivity(i);
+            }
+        });
+
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
