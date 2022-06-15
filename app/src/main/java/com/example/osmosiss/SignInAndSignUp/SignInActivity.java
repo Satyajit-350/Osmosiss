@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.osmosiss.InstructorActivity;
@@ -116,7 +117,7 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    public boolean checkField(TextInputEditText textField){
+    public boolean checkField(EditText textField){
         if(textField.getText().toString().isEmpty()){
             textField.setError("Error");
             valid = false;

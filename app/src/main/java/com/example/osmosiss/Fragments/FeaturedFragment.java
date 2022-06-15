@@ -72,7 +72,7 @@ public class FeaturedFragment extends Fragment {
             binding.emptyDetail.setVisibility(View.INVISIBLE);
         }
 
-
+//        getdata();
         database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,7 +92,7 @@ public class FeaturedFragment extends Fragment {
             }
         });
 
-//        getdata();
+
 
         return binding.getRoot();
     }
