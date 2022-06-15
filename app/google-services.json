@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1043493909705",
+    "project_id": "osmosiss-c7ec0",
+    "storage_bucket": "osmosiss-c7ec0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043493909705:android:f69f006fd773f58a51c918",
+        "android_client_info": {
+          "package_name": "com.example.osmosiss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043493909705-tbrsqh44bq33ot1vaffs51sg7q9er6v5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM1x9lqNDe-4FPCp_Fj5Pl3KZKpfdY8_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043493909705-tbrsqh44bq33ot1vaffs51sg7q9er6v5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

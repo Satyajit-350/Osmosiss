@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search.SearchActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SearchView
+            android:id="@+id/searchView_for_courses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/backgroung_search"
+            android:elevation="10dp"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@color/transparent"
+            android:queryHint="Search For Courses"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Top Searches"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_sans_bold"
+            app:layout_constraintStart_toStartOf="@+id/searchView_for_courses"
+            app:layout_constraintTop_toBottomOf="@+id/searchView_for_courses" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:listitem="@layout/top_search_items" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Browse Categories"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/development_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/development_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Development"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/development_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/business_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/business_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/business_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/finance_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/finance_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finance and Accounting"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/finance_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/it_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/it_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IT and Softwware"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/it_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/office_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/office_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Office Productivity"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/office_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/marketing_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/category_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marketing"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/marketing_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/music_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/cmusic_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Music"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/music_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/photography_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/photography_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photography"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/photography_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/design_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/design_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Design"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/design_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/health_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/developer_mode"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/health_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Health and Fitness"
+                    android:textSize="18sp"
+                    android:layout_toRightOf="@id/health_icon"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/nunito_sans_semibold"/>
+
+                <ImageView
+                    android:id="@+id/arrow_right10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
