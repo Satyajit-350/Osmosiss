@@ -46,7 +46,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         Picasso.get().load(post.getCoursePic()).placeholder(R.drawable.business).into(holder.imageView);
         holder.courseTitle.setText(post.getCourseTitle());
-        holder.ratings.setRating(4.0f);
         holder.courseDescription.setText(post.getCourseDesc());
         FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
@@ -83,7 +82,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             imageView = itemView.findViewById(R.id.course_pic);
             courseTitle = itemView.findViewById(R.id.course_user_name);
             courseDescription = itemView.findViewById(R.id.course_desc);
-            ratings = itemView.findViewById(R.id.rating);
 
         }
     }
