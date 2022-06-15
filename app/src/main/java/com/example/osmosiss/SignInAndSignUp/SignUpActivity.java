@@ -3,7 +3,9 @@ package com.example.osmosiss.SignInAndSignUp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.osmosiss.InstructorActivity;
@@ -27,6 +30,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private ActivitySignUpBinding binding;
@@ -34,6 +39,10 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private ProgressDialog dialog;
     private boolean valid = true;
+
+    private ArrayList<Integer> userList = new ArrayList<>();
+    final String[] userType = new String[]{"User","Instructor","Recruiter"};
+    final int[] selectedUserType = {-1};
 
     int instructor = 1;
     int user = 0;
@@ -52,33 +61,10 @@ public class SignUpActivity extends AppCompatActivity {
         dialog.setTitle("Please Wait");
         dialog.setMessage("Creating your Account");
 
-        binding.isStudent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.selectUserType.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isChecked()){
-                    binding.isAdmin.setChecked(false);
-                    binding.isTeacher.setChecked(false);
-                }
-            }
-        });
-
-        binding.isAdmin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isChecked()){
-                    binding.isStudent.setChecked(false);
-                    binding.isTeacher.setChecked(false);
-                }
-            }
-        });
-
-        binding.isTeacher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isChecked()){
-                    binding.isStudent.setChecked(false);
-                    binding.isAdmin.setChecked(false);
-                }
+            public void onClick(View v) {
+                showUserDialog();
             }
         });
 
@@ -89,14 +75,15 @@ public class SignUpActivity extends AppCompatActivity {
                 checkField(binding.registerEditTextEmail);
                 checkField(binding.registerEditTextName);
                 checkField(binding.registerEditTextPassword);
-                dialog.show();
                 String name = binding.registerEditTextName.getText().toString();
                 String email = binding.registerEditTextEmail.getText().toString();
                 String password = binding.registerEditTextPassword.getText().toString();
 
-                if(!valid&&!(binding.isStudent.isChecked()||binding.isTeacher.isChecked()||binding.isAdmin.isChecked())){
+                String userTitle = binding.selectedUser.getText().toString();
+
+                if(!valid||userTitle==""){
                     dialog.dismiss();
-                    Toast.makeText(SignUpActivity.this, "Please select admin or user or teacher", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please select User or Instructor or Recruiter", Toast.LENGTH_SHORT).show();
                     return;
                 }else{
                     dialog.dismiss();
@@ -106,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Users users;
-                                if(binding.isAdmin.isChecked()){
+                                if(binding.selectedUser.getText().equals("Instructor")){
                                     dialog.show();
                                     users = new Users(name,password,email,instructor);
                                     String id = task.getResult().getUser().getUid();
@@ -118,7 +105,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
 
-                                }else if(binding.isTeacher.isChecked()){
+                                }else if(binding.selectedUser.getText().equals("Recruiter")){
                                     dialog.show();
                                     users = new Users(name,password,email,recruiter);
                                     String id = task.getResult().getUser().getUid();
@@ -131,7 +118,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 }
-                                else{
+                                else if(binding.selectedUser.getText().equals("User")){
                                     dialog.show();;
                                     users = new Users(name,password,email,user);
                                     String id = task.getResult().getUser().getUid();
@@ -164,7 +151,28 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-    public boolean checkField(TextInputEditText textField){
+
+    private void showUserDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select User");
+        builder.setCancelable(false);
+        builder.setSingleChoiceItems(userType, selectedUserType[0], new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                selectedUserType[0] = which;
+                binding.selectedUser.setText(userType[which]);
+                dialog.dismiss();
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    public boolean checkField(EditText textField){
         if(textField.getText().toString().isEmpty()){
             textField.setError("Error");
             valid = false;

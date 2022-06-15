@@ -127,13 +127,13 @@ public class SignInActivity extends AppCompatActivity {
         return valid;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //if user is already signIn
-        if(mAuth.getCurrentUser()!=null){
-            checkUserType();
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        //if user is already signIn
+//        if(mAuth.getCurrentUser()!=null){
+//            checkUserType();
+//        }
+//    }
 
 }
