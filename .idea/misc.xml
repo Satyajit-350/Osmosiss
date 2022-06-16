@@ -12,6 +12,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_baseline_comment_24.xml" value="0.1715" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1715" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_baseline_thumb_up_alt_24.xml" value="0.1715" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_baseline_videocam_24.xml" value="0.1675" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_bestseller.xml" value="0.1715" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_home_24.xml" value="0.1675" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/ic_menu.xml" value="0.1715" />
@@ -43,6 +44,9 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_recruiter_home.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_recruiter_post.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_wish_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/item_category.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/item_popular.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/items.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/no_internet.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/post_list.xml" value="0.25416666666666665" />

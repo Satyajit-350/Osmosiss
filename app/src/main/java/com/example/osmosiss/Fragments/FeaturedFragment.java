@@ -8,15 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.osmosiss.Adapters.CategoryAdapter;
+
 import com.example.osmosiss.Adapters.PostAdapter;
-import com.example.osmosiss.Models.Category;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.databinding.FragmentFeaturedBinding;
 import com.example.osmosiss.search.SearchActivity;

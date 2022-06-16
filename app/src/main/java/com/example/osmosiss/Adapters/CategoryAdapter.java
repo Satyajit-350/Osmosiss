@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.osmosiss.Course.CourseActivity;
-import com.example.osmosiss.Models.Category;
+import com.example.osmosiss.Models.CategoryItems;
 import com.example.osmosiss.R;
 import com.squareup.picasso.Picasso;
 
@@ -21,9 +21,9 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private Context context;
-    private List<Category> categoryList;
+    private List<CategoryItems> categoryList;
 
-    public CategoryAdapter(Context context, List<Category> categoryList) {
+    public CategoryAdapter(Context context, List<CategoryItems> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
@@ -31,23 +31,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_items,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category,parent,false);
         return new CategoryViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
 
-        Category category = categoryList.get(position);
-
-        // here we will bind data in recyclerview ro items.
+        CategoryItems category = categoryList.get(position);
 
         holder.categoryName.setText(categoryList.get(position).getCategoryName());
-        holder.totalCategory.setText(categoryList.get(position).getTotalCourses());
 
-        // for image we need to add glide image fetching library from netwok
-
-        Picasso.get().load(category.getImage()).placeholder(R.drawable.business).into(holder.categoryImage);
+        Picasso.get().load(category.getCategoryPic()).placeholder(R.drawable.categoryimg).into(holder.categoryImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,14 +62,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView categoryImage;
-        private TextView categoryName, totalCategory;
+        private TextView categoryName;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            categoryImage = itemView.findViewById(R.id.course);
-            categoryName = itemView.findViewById(R.id.course_name);
-            totalCategory = itemView.findViewById(R.id.total_course);
+            categoryImage = itemView.findViewById(R.id.category_img);
+            categoryName = itemView.findViewById(R.id.Category_Head);
         }
     }
 }
