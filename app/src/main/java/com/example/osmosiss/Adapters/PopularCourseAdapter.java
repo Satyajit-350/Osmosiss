@@ -1,7 +1,10 @@
 package com.example.osmosiss.Adapters;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +50,12 @@ public class PopularCourseAdapter extends RecyclerView.Adapter<PopularCourseAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CourseActivity.class);
+                intent.putExtra("Cname",courseItems.getCourseName());
+                intent.putExtra("image",courseItems.getCoursePic());
+//                Pair[] pairs = new Pair[1];
+//                pairs[0] = new Pair<View,String>(holder.courseImg,"image");
+//                ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context,pairs);
+//                context.startActivity(intent,activityOptions);
                 context.startActivity(intent);
             }
         });

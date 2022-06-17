@@ -43,13 +43,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.categoryName.setText(categoryList.get(position).getCategoryName());
 
         Picasso.get().load(category.getCategoryPic()).placeholder(R.drawable.categoryimg).into(holder.categoryImage);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, CourseActivity.class);
-                context.startActivity(intent);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, CourseActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
 
     }
 

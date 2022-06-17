@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.osmosiss.Adapters.CategoryAdapter;
-import com.example.osmosiss.Adapters.CourseAdapter;
 import com.example.osmosiss.Adapters.PopularCourseAdapter;
 import com.example.osmosiss.Models.CategoryItems;
 import com.example.osmosiss.Models.CourseItems;
