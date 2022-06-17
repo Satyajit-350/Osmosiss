@@ -30,7 +30,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         arrayList = new ArrayList<>();
-        binding.recyclerView.setLayoutManager(new GridLayoutManager(this,3,GridLayoutManager.HORIZONTAL,false));
+        binding.recyclerView.setLayoutManager(new GridLayoutManager(this,2,GridLayoutManager.HORIZONTAL,false));
         tsAdapter = new TopSearchAdapter(SearchActivity.this,arrayList);
         binding.recyclerView.setAdapter(tsAdapter);
         getTopSearches();

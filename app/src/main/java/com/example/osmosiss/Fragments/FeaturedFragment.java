@@ -49,15 +49,6 @@ public class FeaturedFragment extends Fragment {
 
         binding =  FragmentFeaturedBinding.inflate(getLayoutInflater(), container, false);
 
-        binding.searchView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SearchActivity.class);
-                Bundle b = ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
-                startActivity(intent,b);
-            }
-        });
-
         postList = new ArrayList<>();
         binding.categoryRv.setLayoutManager(new LinearLayoutManager(getContext()));
         postAdapter = new PostAdapter(getContext(), postList);

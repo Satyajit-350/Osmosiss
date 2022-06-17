@@ -3,29 +3,24 @@ package com.example.osmosiss;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.osmosiss.Adapters.RecyclerViewAdapter;
 import com.example.osmosiss.Fragments.AccountFragment;
 import com.example.osmosiss.Fragments.FeaturedFragment;
 import com.example.osmosiss.Fragments.LearningFragment;
 import com.example.osmosiss.Fragments.WishListFragment;
-import com.example.osmosiss.Models.data;
 import com.example.osmosiss.SignInAndSignUp.SignInActivity;
 import com.example.osmosiss.databinding.ActivityMainBinding;
-import com.google.android.gms.common.internal.Objects;
+import com.example.osmosiss.search.SearchActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ChipNavigationBar.OnItemSelectedListener {
 
@@ -43,6 +38,15 @@ public class MainActivity extends AppCompatActivity implements ChipNavigationBar
         loadFragment(new FeaturedFragment());
         binding.bottomNav.setOnItemSelectedListener(this);
         binding.bottomNav.setItemSelected(R.id.featured,true);
+
+        binding.searchET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                Bundle b = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle();
+                startActivity(intent,b);
+            }
+        });
 
     }
 
