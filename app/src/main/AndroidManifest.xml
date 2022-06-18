@@ -17,20 +17,28 @@
         android:theme="@style/Theme.Osmosiss"
         tools:targetApi="31">
         <activity
+            android:name=".UI.SplashScreenActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".UI.NoInternetActivity"
+            android:exported="false"/>
+        <activity
             android:name=".UI.VideoViewActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SignInAndSignUp.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".UI.IntroActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RecruiterActivity"
@@ -43,9 +51,9 @@
             android:exported="false" />
         <activity
             android:name=".Course.CourseActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Osmosiss.NoActionBar"
-            android:exported="false" />
+            android:theme="@style/Theme.Osmosiss.NoActionBar" />
         <activity
             android:name=".SignInAndSignUp.SignUpActivity"
             android:exported="false" />
