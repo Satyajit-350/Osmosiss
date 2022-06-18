@@ -1,13 +1,17 @@
 package com.example.osmosiss.Fragments;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,59 +51,81 @@ public class FeaturedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding =  FragmentFeaturedBinding.inflate(getLayoutInflater(), container, false);
+        binding = FragmentFeaturedBinding.inflate(getLayoutInflater(), container, false);
 
         postList = new ArrayList<>();
-        binding.categoryRv.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.postRv.setLayoutManager(new LinearLayoutManager(getContext()));
         postAdapter = new PostAdapter(getContext(), postList);
-        binding.categoryRv.setAdapter(postAdapter);
+        binding.postRv.setAdapter(postAdapter);
 
-        if(postList.isEmpty()){
-            binding.emptyDetail.setVisibility(View.VISIBLE);
+        if(checkInternet()!=false){
+            binding.noInternetView.setVisibility(View.INVISIBLE);
+            getdata();
         }else{
-            binding.emptyDetail.setVisibility(View.INVISIBLE);
+            binding.noInternetView.setVisibility(View.VISIBLE);
         }
 
-//        getdata();
+
+        //swipeRefresh Layout
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                boolean checkConnection = checkInternet();
+                if(checkConnection==false){
+                    binding.noInternetView.setVisibility(View.VISIBLE);
+                }else{
+                    binding.noInternetView.setVisibility(View.INVISIBLE);
+                    getdata();
+
+                }
+                binding.swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        return binding.getRoot();
+    }
+
+    private boolean checkInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (netInfo != null) {
+            if (netInfo.isConnected()) {
+                // Internet Available
+                return true;
+            }else {
+                //No internet
+                return false;
+            }
+        } else {
+            //No internet
+            return false;
+        }
+    }
+
+    //update these data while using firebase
+    private void getdata() {
+//        binding.shimmer.startShimmer();
+//        binding.postRv.setVisibility(View.VISIBLE);
+//        postList.clear();
         database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    binding.emptyDetail.setVisibility(View.INVISIBLE);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
                     postList.add(post);
                 }
+//                binding.shimmer.stopShimmer();
+//                binding.shimmer.setVisibility(View.GONE);
                 postAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                binding.noInternetView.setVisibility(View.VISIBLE);
             }
         });
 
-
-
-        return binding.getRoot();
     }
-    //we will update these data while using firebase
-//    private void getdata() {
-//        categoryList.clear();
-//        categoryList.add(new Category("122","Marketing","17","https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051555.jpg?w=2000"));
-//        //categoryList.add(new Category("124","UI/UX","12","https://sitegalleria.com/wp-content/uploads/2019/07/UI-UX-Design-Training-Bangalore-Site-Galleria.jpg"));
-//        categoryList.add(new Category("123","Development","23","https://img.freepik.com/free-vector/programer-learning-programming-languages-by-computer-laptop-website-tutorial-channel-online-education-class-vector-illustration-software-development-programming-languages-learning_1150-55428.jpg?w=2000"));
-//        categoryList.add(new Category("121","Programming","56","https://img.freepik.com/free-vector/programming-languages-learning-software-coding-courses-website-development-class-script-writing-it-programmers-cartoon-characters_335657-789.jpg?w=2000"));
-//        categoryList.add(new Category("1223","Business","7","https://thumbs.dreamstime.com/b/business-training-courses-concept-modern-vector-illustration-flat-style-landing-page-mobile-app-poster-banner-flyer-189016731.jpg"));
-//        categoryList.add(new Category("129","Photography","9","https://img.freepik.com/free-vector/online-course-photography-video_82574-6141.jpg?w=2000"));
-//        categoryList.add(new Category("127","Music","36","https://img.freepik.com/free-vector/music-club-school-online-service-platform-students-learn_277904-17030.jpg?w=2000"));
-//        categoryList.add(new Category("122","Marketing","17","https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051555.jpg?w=2000"));
-//        categoryList.add(new Category("124","UI/UX","12","https://sitegalleria.com/wp-content/uploads/2019/07/UI-UX-Design-Training-Bangalore-Site-Galleria.jpg"));
-//        categoryList.add(new Category("123","Development","23","https://img.freepik.com/free-vector/programer-learning-programming-languages-by-computer-laptop-website-tutorial-channel-online-education-class-vector-illustration-software-development-programming-languages-learning_1150-55428.jpg?w=2000"));
-//        categoryList.add(new Category("121","Programming","56","https://img.freepik.com/free-vector/programming-languages-learning-software-coding-courses-website-development-class-script-writing-it-programmers-cartoon-characters_335657-789.jpg?w=2000"));
-//        categoryList.add(new Category("1223","Business","7","https://thumbs.dreamstime.com/b/business-training-courses-concept-modern-vector-illustration-flat-style-landing-page-mobile-app-poster-banner-flyer-189016731.jpg"));
-//        categoryList.add(new Category("129","Photography","9","https://img.freepik.com/free-vector/online-course-photography-video_82574-6141.jpg?w=2000"));
-//        categoryList.add(new Category("127","Music","36","https://img.freepik.com/free-vector/music-club-school-online-service-platform-students-learn_277904-17030.jpg?w=2000"));
-//    }
+
 }
