@@ -58,6 +58,8 @@ public class IntroActivity extends AppCompatActivity {
         super.onStart();
         //if user is already signIn
         if(mAuth.getCurrentUser()!=null){
+            binding.relativePageLayout.setVisibility(View.INVISIBLE);
+            binding.LoadingAnimation.setVisibility(View.VISIBLE);
             checkUserType();
         }
     }
