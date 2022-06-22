@@ -123,7 +123,7 @@
         android:id="@+id/Loading_animation"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         app:lottie_autoPlay="true"

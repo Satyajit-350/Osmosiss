@@ -8,6 +8,7 @@ public class Post {
     private String courseDesc;
     private String coursePic;
     private long postedAt;
+    private int postLike;
 
     public Post(String postId, String postedBy, String courseTitle, String courseDesc, String coursePic, long postedAt) {
         this.postId = postId;
@@ -18,6 +19,14 @@ public class Post {
         this.postedAt = postedAt;
     }
     public Post(){};
+
+    public int getPostLike() {
+        return postLike;
+    }
+
+    public void setPostLike(int postLike) {
+        this.postLike = postLike;
+    }
 
     public String getPostId() {
         return postId;

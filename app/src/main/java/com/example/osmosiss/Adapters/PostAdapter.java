@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.Models.Users;
 import com.example.osmosiss.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,6 +49,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         Picasso.get().load(post.getCoursePic()).placeholder(R.drawable.business).into(holder.imageView);
         holder.courseTitle.setText(post.getCourseTitle());
         holder.courseDescription.setText(post.getCourseDesc());
+        holder.likeText.setText(post.getPostLike()+"");
         FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -60,6 +63,50 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
                     }
                 });
+        FirebaseDatabase.getInstance().getReference()
+                        .child("Posts")
+                        .child(post.getPostId())
+                        .child("likes")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        holder.likeText.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.heart_red,0,0);
+                                    }else{
+                                        holder.likeText.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                FirebaseDatabase.getInstance().getReference().child("Posts")
+                                                        .child(post.getPostId())
+                                                        .child("likes")
+                                                        .child(FirebaseAuth.getInstance().getUid())
+                                                        .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void unused) {
+                                                                FirebaseDatabase.getInstance().getReference()
+                                                                        .child("Posts")
+                                                                        .child(post.getPostId())
+                                                                        .child("postLike")
+                                                                        .setValue(post.getPostLike()+1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                            @Override
+                                                                            public void onSuccess(Void aVoid) {
+                                                                                holder.likeText.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.heart_red,0,0);
+                                                                            }
+                                                                        });
+                                                            }
+                                                        });
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
     }
 
     @Override
@@ -73,7 +120,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private ImageView imageView;
         private TextView courseTitle;
         private TextView courseDescription;
-        private RatingBar ratings;
+        private TextView likeText;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +129,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             imageView = itemView.findViewById(R.id.course_pic);
             courseTitle = itemView.findViewById(R.id.course_user_name);
             courseDescription = itemView.findViewById(R.id.course_desc);
+            likeText = itemView.findViewById(R.id.LikeIV);
 
         }
     }

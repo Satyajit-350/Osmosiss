@@ -81,9 +81,9 @@
 
                 <ImageView
                     android:id="@+id/development_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/development"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -111,9 +111,9 @@
 
                 <ImageView
                     android:id="@+id/business_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/businessandfinance"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -141,9 +141,9 @@
 
                 <ImageView
                     android:id="@+id/finance_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/accounting"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -171,9 +171,9 @@
 
                 <ImageView
                     android:id="@+id/it_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/it_and_software"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -201,9 +201,9 @@
 
                 <ImageView
                     android:id="@+id/office_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/officeproductivity"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -231,9 +231,9 @@
 
                 <ImageView
                     android:id="@+id/marketing_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/marketing"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -261,9 +261,9 @@
 
                 <ImageView
                     android:id="@+id/music_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/musicnote"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -291,9 +291,9 @@
 
                 <ImageView
                     android:id="@+id/photography_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/photography"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -321,9 +321,9 @@
 
                 <ImageView
                     android:id="@+id/design_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/design"
                     android:layout_alignParentLeft="true" />
 
                 <TextView
@@ -351,9 +351,9 @@
 
                 <ImageView
                     android:id="@+id/health_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/developer_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/health"
                     android:layout_alignParentLeft="true" />
 
                 <TextView

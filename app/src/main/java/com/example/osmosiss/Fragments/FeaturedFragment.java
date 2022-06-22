@@ -107,13 +107,14 @@ public class FeaturedFragment extends Fragment {
     private void getdata() {
 //        binding.shimmer.startShimmer();
 //        binding.postRv.setVisibility(View.VISIBLE);
-//        postList.clear();
+        postList.clear();
         database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                postList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
+                    post.setPostId(dataSnapshot.getKey());
                     postList.add(post);
                 }
 //                binding.shimmer.stopShimmer();
