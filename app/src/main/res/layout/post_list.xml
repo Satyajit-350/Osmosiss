@@ -127,25 +127,29 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/love" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/CommentIV"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:src="@drawable/comment"/>
+                android:layout_height="wrap_content"
+                android:text="24"
+                android:textSize="12sp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:gravity="center"
+                android:drawableTop="@drawable/chat_bubble"/>
 
-            <ImageView
+            <TextView
                 android:id="@+id/ShareIV"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/send"/>
-            <ImageView
-                android:id="@+id/SaveIV"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_height="25dp"
-                android:src="@drawable/save_black"/>
+                android:layout_height="wrap_content"
+                android:text="24"
+                android:textSize="12sp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:gravity="center"
+                android:drawableTop="@drawable/send_bubble"/>
 
         </LinearLayout>
     </LinearLayout>

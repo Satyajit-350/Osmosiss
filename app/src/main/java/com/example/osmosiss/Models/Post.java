@@ -9,6 +9,7 @@ public class Post {
     private String coursePic;
     private long postedAt;
     private int postLike;
+    private int commentCount;
 
     public Post(String postId, String postedBy, String courseTitle, String courseDesc, String coursePic, long postedAt) {
         this.postId = postId;
@@ -19,6 +20,14 @@ public class Post {
         this.postedAt = postedAt;
     }
     public Post(){};
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 
     public int getPostLike() {
         return postLike;

@@ -1,6 +1,7 @@
 package com.example.osmosiss.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.osmosiss.Comment.CommentActivity;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.Models.Users;
 import com.example.osmosiss.R;
@@ -50,6 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.courseTitle.setText(post.getCourseTitle());
         holder.courseDescription.setText(post.getCourseDesc());
         holder.likeText.setText(post.getPostLike()+"");
+        holder.commentTxt.setText(post.getCommentCount()+"");
         FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -107,6 +110,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                                 }
                             });
 
+        holder.commentTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CommentActivity.class);
+                intent.putExtra("postId",post.getPostId());
+                intent.putExtra("postedBy",post.getPostedBy());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -120,7 +134,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private ImageView imageView;
         private TextView courseTitle;
         private TextView courseDescription;
-        private TextView likeText;
+        private TextView likeText,commentTxt,shareTxt;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -130,6 +144,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             courseTitle = itemView.findViewById(R.id.course_user_name);
             courseDescription = itemView.findViewById(R.id.course_desc);
             likeText = itemView.findViewById(R.id.LikeIV);
+            commentTxt = itemView.findViewById(R.id.CommentIV);
+            shareTxt = itemView.findViewById(R.id.ShareIV);
 
         }
     }
