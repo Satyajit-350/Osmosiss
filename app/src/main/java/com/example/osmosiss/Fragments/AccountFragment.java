@@ -23,7 +23,7 @@ public class AccountFragment extends Fragment {
     private FirebaseAuth mAuth;
 
     public AccountFragment(){
-        //empty fragments
+        //empty fragment
     }
 
     @Override
@@ -34,6 +34,10 @@ public class AccountFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
+        binding.personalinfo.setVisibility(View.VISIBLE);
+        binding.experience.setVisibility(View.GONE);
+        binding.review.setVisibility(View.GONE);
+
         binding.textView14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +46,42 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
                 getActivity().finish();
                 Toast.makeText(getContext(), "SignOut Successful", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.personalinfobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.personalinfo.setVisibility(View.VISIBLE);
+                binding.experience.setVisibility(View.GONE);
+                binding.review.setVisibility(View.GONE);
+                binding.personalinfobtn.setTextColor(getResources().getColor(R.color.blue));
+                binding.experiencebtn.setTextColor(getResources().getColor(R.color.grey));
+                binding.reviewbtn.setTextColor(getResources().getColor(R.color.grey));
+            }
+        });
+
+        binding.experiencebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.personalinfo.setVisibility(View.GONE);
+                binding.experience.setVisibility(View.VISIBLE);
+                binding.review.setVisibility(View.GONE);
+                binding.personalinfobtn.setTextColor(getResources().getColor(R.color.grey));
+                binding.experiencebtn.setTextColor(getResources().getColor(R.color.blue));
+                binding.reviewbtn.setTextColor(getResources().getColor(R.color.grey));
+            }
+        });
+
+        binding.reviewbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.personalinfo.setVisibility(View.GONE);
+                binding.experience.setVisibility(View.GONE);
+                binding.review.setVisibility(View.VISIBLE);
+                binding.personalinfobtn.setTextColor(getResources().getColor(R.color.grey));
+                binding.experiencebtn.setTextColor(getResources().getColor(R.color.grey));
+                binding.reviewbtn.setTextColor(getResources().getColor(R.color.blue));
             }
         });
 

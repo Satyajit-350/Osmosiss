@@ -1,5 +1,7 @@
 package com.example.osmosiss.Fragments;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,10 +13,12 @@ import android.view.ViewGroup;
 
 import com.example.osmosiss.Adapters.CategoryAdapter;
 import com.example.osmosiss.Adapters.PopularCourseAdapter;
+import com.example.osmosiss.MainActivity;
 import com.example.osmosiss.Models.CategoryItems;
 import com.example.osmosiss.Models.CourseItems;
 import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.FragmentLearningBinding;
+import com.example.osmosiss.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +45,17 @@ public class LearningFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentLearningBinding.inflate(getLayoutInflater(), container, false);
+
+        //search bar
+        binding.searchET1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                Bundle b = ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
+                startActivity(intent,b);
+            }
+        });
+
 
         courseArrayList = new ArrayList<>();
         popularCourseArrayList = new ArrayList<>();

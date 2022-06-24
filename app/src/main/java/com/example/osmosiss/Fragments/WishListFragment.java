@@ -1,5 +1,7 @@
 package com.example.osmosiss.Fragments;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.FragmentWishListBinding;
+import com.example.osmosiss.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,16 @@ public class WishListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding =  FragmentWishListBinding.inflate(getLayoutInflater(), container, false);
+
+        //search bar
+        binding.searchET2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                Bundle b = ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
+                startActivity(intent,b);
+            }
+        });
 
         strings = new ArrayList<>();
 

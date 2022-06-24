@@ -39,15 +39,6 @@ public class MainActivity extends AppCompatActivity implements ChipNavigationBar
         binding.bottomNav.setOnItemSelectedListener(this);
         binding.bottomNav.setItemSelected(R.id.featured,true);
 
-        binding.searchET.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                Bundle b = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle();
-                startActivity(intent,b);
-            }
-        });
-
     }
 
     private void loadFragment(Fragment fragment) {

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.osmosiss.Adapters.PostAdapter;
+import com.example.osmosiss.MainActivity;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.databinding.FragmentFeaturedBinding;
 import com.example.osmosiss.search.SearchActivity;
@@ -81,6 +82,17 @@ public class FeaturedFragment extends Fragment {
                 binding.swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        //search bar
+        binding.searchET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                Bundle b = ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
+                startActivity(intent,b);
+            }
+        });
+
 
         return binding.getRoot();
     }
