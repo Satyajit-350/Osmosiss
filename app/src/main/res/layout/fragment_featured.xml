@@ -80,29 +80,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!--            <com.facebook.shimmer.ShimmerFrameLayout-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:id="@+id/shimmer_layout">-->
+                            <com.facebook.shimmer.ShimmerFrameLayout
+                                android:id="@+id/shimmer_lay"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:shimmer_duration="8000">
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:orientation="vertical">-->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
 
-                <!--                    <include layout="@layout/shimmer_layout"/>-->
-                <!--                    <include layout="@layout/shimmer_layout"/>-->
-                <!--                    <include layout="@layout/shimmer_layout"/>-->
+                                    <include layout="@layout/shimmer_layout"/>
+                                    <include layout="@layout/shimmer_layout"/>
+                                    <include layout="@layout/shimmer_layout"/>
 
-                <!--                </LinearLayout>-->
+                                </LinearLayout>
 
-                <!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
+                            </com.facebook.shimmer.ShimmerFrameLayout>
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/post_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     tools:listitem="@layout/post_list" />
 
                 <RelativeLayout

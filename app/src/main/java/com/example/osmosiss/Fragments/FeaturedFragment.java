@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,13 +72,24 @@ public class FeaturedFragment extends Fragment {
         binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                binding.shimmerLay.startShimmer();
                 boolean checkConnection = checkInternet();
                 if(checkConnection==false){
-                    binding.noInternetView.setVisibility(View.VISIBLE);
+                    binding.shimmerLay.startShimmer();
+                    binding.shimmerLay.setVisibility(View.VISIBLE);
+                    binding.postRv.setVisibility(View.GONE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            // yourMethod();
+                            binding.noInternetView.setVisibility(View.VISIBLE);
+                            binding.shimmerLay.setVisibility(View.GONE);
+                        }
+                    }, 3000);
                 }else{
-                    binding.noInternetView.setVisibility(View.INVISIBLE);
+                    binding.postRv.setVisibility(View.VISIBLE);
+                    binding.noInternetView.setVisibility(View.GONE);
                     getdata();
-
                 }
                 binding.swipeRefreshLayout.setRefreshing(false);
             }
@@ -117,8 +129,8 @@ public class FeaturedFragment extends Fragment {
 
     //update these data while using firebase
     private void getdata() {
-//        binding.shimmer.startShimmer();
-//        binding.postRv.setVisibility(View.VISIBLE);
+        binding.shimmerLay.startShimmer();
+        binding.postRv.setVisibility(View.VISIBLE);
         postList.clear();
         database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,8 +141,8 @@ public class FeaturedFragment extends Fragment {
                     post.setPostId(dataSnapshot.getKey());
                     postList.add(post);
                 }
-//                binding.shimmer.stopShimmer();
-//                binding.shimmer.setVisibility(View.GONE);
+                binding.shimmerLay.stopShimmer();
+                binding.shimmerLay.setVisibility(View.GONE);
                 postAdapter.notifyDataSetChanged();
             }
             @Override
