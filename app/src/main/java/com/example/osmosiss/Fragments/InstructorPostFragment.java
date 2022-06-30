@@ -16,9 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.osmosiss.Course.CreateCourse.AddCourseActivity;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.Models.Users;
-import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.FragmentInstructorPostBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -144,6 +144,14 @@ public class InstructorPostFragment extends Fragment {
                     }
                 });
 
+            }
+        });
+
+        binding.createCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddCourseActivity.class);
+                startActivity(intent);
             }
         });
         return binding.getRoot();

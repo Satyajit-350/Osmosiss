@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingBottom="10dp"
+    android:paddingRight="20dp"
+    android:background="#FAF9F6"
+    tools:context=".Course.CreateCourse.NewSectionActivity">
+
+    <EditText
+        android:id="@+id/section_NameTV"
+        android:textColor="#424242"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Section Name"
+        android:background="@drawable/sharp_rect_02"
+        android:textColorHint="#bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/addVideo_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Video"
+        android:background="@drawable/sharp_rect_02"
+        android:backgroundTint="#0288d1"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <Button
+        android:id="@+id/add_articleBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Article"
+        android:background="@drawable/sharp_rect_02"
+        android:backgroundTint="#0288d1"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+    <VideoView
+        android:id="@+id/video_View"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"/>
+
+<!--    <com.rajat.pdfviewer.PdfRendererView-->
+<!--        android:id="@+id/pdfView"-->
+<!--        android:layout_below="@+id/tv_header"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_height="400dp"/>-->
+
+</LinearLayout>
