@@ -26,6 +26,7 @@ import android.widget.VideoView;
 
 import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.ActivityNewSectionBinding;
+import com.github.barteksc.pdfviewer.PDFView;
 
 public class NewSectionActivity extends AppCompatDialogFragment {
 
@@ -33,7 +34,8 @@ public class NewSectionActivity extends AppCompatDialogFragment {
     private Button getVideoBtn;
     private Button getPdfBtn;
     private VideoView videoView;
-    private Uri videoUri;
+    private PDFView pdfView;
+    private Uri videoUri,pdfUri;
     private ExampleDialogListener listener;
 
     @NonNull
@@ -56,9 +58,10 @@ public class NewSectionActivity extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO
                         String courseTitle = courseTitleEditText.getText().toString();
-//                        String uri = videoUri.toString();
+                        String uri = videoUri.toString();
+                        String pdfuri = pdfUri.toString();
                         //also add pdf
-                        listener.additem(courseTitle);
+                        listener.additem(courseTitle,uri,pdfuri);
                     }
                 });
 
@@ -66,6 +69,7 @@ public class NewSectionActivity extends AppCompatDialogFragment {
         getVideoBtn = view.findViewById(R.id.addVideo_btn);
         getPdfBtn = view.findViewById(R.id.add_articleBtn);
         videoView = view.findViewById(R.id.video_View);
+        pdfView = view.findViewById(R.id.pdfView);
 
         getVideoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +83,25 @@ public class NewSectionActivity extends AppCompatDialogFragment {
             }
         });
 
+        getPdfBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions((Activity) getContext(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+                }else{
+                    selectPdf();
+                }
+            }
+        });
+
         return builder.create();
+    }
+
+    private void selectPdf() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("application/pdf");
+        startActivityForResult(intent, 200);
     }
 
     @Override
@@ -97,7 +119,7 @@ public class NewSectionActivity extends AppCompatDialogFragment {
     //interface to send data from dialog box to activity
     public interface ExampleDialogListener{
         //add video uri as well as pdf
-        void additem(String courseTitle);
+        void additem(String courseTitle,String vUri, String pdfUri);
     }
 
     private void selectVideo() {
@@ -128,6 +150,12 @@ public class NewSectionActivity extends AppCompatDialogFragment {
 
             videoView.start();
 
+        }
+
+        if(requestCode == 200 && data!=null){
+            pdfUri = data.getData();
+            pdfView.setVisibility(View.VISIBLE);
+            pdfView.fromUri(pdfUri).load();
         }
     }
 }

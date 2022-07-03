@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.R;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 public class AdapterCourseContent extends RecyclerView.Adapter<AdapterCourseContent.ViewHolder> {
 
     private Context context;
-    private List<String> list;
+    private List<CourseContent> list;
 
-    public AdapterCourseContent(Context context, List<String> list) {
+    public AdapterCourseContent(Context context, List<CourseContent> list) {
         this.context = context;
         this.list = list;
     }
@@ -32,7 +33,8 @@ public class AdapterCourseContent extends RecyclerView.Adapter<AdapterCourseCont
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(list.get(position));
+        CourseContent courseContent = list.get(position);
+        holder.textView.setText(courseContent.getTitle());
     }
 
     @Override

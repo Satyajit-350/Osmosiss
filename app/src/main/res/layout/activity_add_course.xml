@@ -217,7 +217,6 @@
         android:textColorHint="#0288d1"
         android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
         android:padding="10dp"
-
         android:drawablePadding="10dp"
         />
 

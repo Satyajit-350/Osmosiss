@@ -57,14 +57,14 @@
         android:visibility="gone"
         android:layout_marginTop="20dp"/>
 
-<!--    <com.rajat.pdfviewer.PdfRendererView-->
-<!--        android:id="@+id/pdfView"-->
-<!--        android:layout_below="@+id/tv_header"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:visibility="visible"-->
-<!--        android:layout_height="400dp"/>-->
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_below="@+id/tv_header"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="400dp"/>
 
 </LinearLayout>

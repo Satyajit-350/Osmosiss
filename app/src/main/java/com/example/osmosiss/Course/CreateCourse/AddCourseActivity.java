@@ -111,7 +111,7 @@ public class AddCourseActivity extends AppCompatActivity {
         binding.NextTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //putAllDataInSharedPref();
+                putAllDataInSharedPref();
                 Intent intent = new Intent(AddCourseActivity.this,AddCourseContentActivity.class);
                 intent.putExtra("Title",binding.courseTitleTV.getText().toString());
                 startActivity(intent);
