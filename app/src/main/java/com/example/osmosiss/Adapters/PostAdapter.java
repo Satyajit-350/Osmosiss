@@ -2,6 +2,8 @@ package com.example.osmosiss.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.osmosiss.Comment.CommentActivity;
+import com.example.osmosiss.Course.CourseDetails.CourseDetailActivity;
+import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.Models.Users;
 import com.example.osmosiss.R;
@@ -24,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
@@ -116,6 +122,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                 Intent intent = new Intent(context, CommentActivity.class);
                 intent.putExtra("postId",post.getPostId());
                 intent.putExtra("postedBy",post.getPostedBy());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CourseDetailActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("content", (Serializable) post.getCourseContentList());
+                intent.putExtra("postId",post.getPostId());
+                intent.putExtra("postedBy",post.getPostedBy());
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

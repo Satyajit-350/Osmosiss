@@ -1,6 +1,7 @@
 package com.example.osmosiss.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.osmosiss.MainActivity2;
 import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.R;
 
@@ -35,6 +37,14 @@ public class AdapterCourseContent extends RecyclerView.Adapter<AdapterCourseCont
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CourseContent courseContent = list.get(position);
         holder.textView.setText(courseContent.getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MainActivity2.class);
+                intent.putExtra("video",courseContent.getVideoUri());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

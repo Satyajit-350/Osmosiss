@@ -14,6 +14,7 @@ public class Post {
     private String courseSubCategory;
     private String courseLanguage;
     private String courseLevel;
+    private String coursePrice;
     private List<CourseContent> courseContentList;
     private long postedAt;
     private int postLike;
@@ -21,7 +22,7 @@ public class Post {
 
     public Post(String postId, String postedBy, String courseTitle, String courseSubTitle, String courseDesc,
                 String coursePic, String courseCategory, String courseSubCategory, String courseLanguage,
-                String courseLevel, List<CourseContent> courseContentList, long postedAt, int postLike, int commentCount) {
+                String courseLevel, String coursePrice, List<CourseContent> courseContentList, long postedAt, int postLike, int commentCount) {
         this.postId = postId;
         this.postedBy = postedBy;
         this.courseTitle = courseTitle;
@@ -32,6 +33,7 @@ public class Post {
         this.courseSubCategory = courseSubCategory;
         this.courseLanguage = courseLanguage;
         this.courseLevel = courseLevel;
+        this.coursePrice = coursePrice;
         this.courseContentList = courseContentList;
         this.postedAt = postedAt;
         this.postLike = postLike;
@@ -46,6 +48,14 @@ public class Post {
 
     public void setCourseContentList(List<CourseContent> courseContentList) {
         this.courseContentList = courseContentList;
+    }
+
+    public String getCoursePrice() {
+        return coursePrice;
+    }
+
+    public void setCoursePrice(String coursePrice) {
+        this.coursePrice = coursePrice;
     }
 
     public String getCourseSubTitle() {

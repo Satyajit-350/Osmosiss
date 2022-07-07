@@ -11,6 +11,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,14 @@ import android.widget.VideoView;
 import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.ActivityNewSectionBinding;
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.Date;
 
 public class NewSectionActivity extends AppCompatDialogFragment {
 
@@ -37,6 +46,14 @@ public class NewSectionActivity extends AppCompatDialogFragment {
     private PDFView pdfView;
     private Uri videoUri,pdfUri;
     private ExampleDialogListener listener;
+    private FirebaseStorage storage;
+    private FirebaseDatabase database;
+    private FirebaseAuth auth;
+
+    private ProgressDialog dialog;
+
+    private String Vuri;
+    private String pdfuri;
 
     @NonNull
     @Override
@@ -58,12 +75,23 @@ public class NewSectionActivity extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO
                         String courseTitle = courseTitleEditText.getText().toString();
-                        String uri = videoUri.toString();
-                        String pdfuri = pdfUri.toString();
+//                        Vuri = videoUri.toString();
+//                        String pdfuri = pdfUri.toString();
                         //also add pdf
-                        listener.additem(courseTitle,uri,pdfuri);
+                        listener.additem(courseTitle,Vuri,pdfuri);
                     }
                 });
+
+        database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        dialog = new ProgressDialog(getContext());
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Video Uploading");
+        dialog.setMessage("Please wait...");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
 
         courseTitleEditText = view.findViewById(R.id.section_NameTV);
         getVideoBtn = view.findViewById(R.id.addVideo_btn);
@@ -147,8 +175,23 @@ public class NewSectionActivity extends AppCompatDialogFragment {
             videoUri = data.getData();
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(videoUri);
-
             videoView.start();
+
+            final StorageReference reference1 = storage.getReference().child("posts")
+                    .child("courseContent").child("videos/")
+                    .child(new Date().getTime()+"");
+            reference1.putFile(videoUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                   reference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                       @Override
+                       public void onSuccess(Uri uri) {
+                           Vuri = uri.toString();
+                           Toast.makeText(getContext(), "Video uploaded", Toast.LENGTH_SHORT).show();
+                       }
+                   }) ;
+                }
+            });
 
         }
 
@@ -156,6 +199,22 @@ public class NewSectionActivity extends AppCompatDialogFragment {
             pdfUri = data.getData();
             pdfView.setVisibility(View.VISIBLE);
             pdfView.fromUri(pdfUri).load();
+
+            final StorageReference reference2 = storage.getReference().child("posts")
+                    .child("courseContent").child("pdfs/")
+                    .child(new Date().getTime()+"");
+            reference2.putFile(pdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    reference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            pdfuri = uri.toString();
+                            Toast.makeText(getContext(), "pdf uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    }) ;
+                }
+            });
         }
     }
 }

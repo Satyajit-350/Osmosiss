@@ -156,42 +156,39 @@ public class LaunchCourseActivity extends AppCompatActivity {
                 .child(mAuth.getUid())
                 .child(new Date().getTime()+"");
 
-        final StorageReference reference1 = storage.getReference().child("posts")
-                        .child("courseContent").child("videos/")
-                                .child(new Date().getTime()+"");
-        final StorageReference reference2 = storage.getReference().child("posts")
-                        .child("courseContent")
-                                .child("pdf/")
-                                        .child(new Date().getTime()+"");
-
         reference.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Post post = new Post();
-                post.setCoursePic(imgUri.toString());
-                post.setPostedBy(mAuth.getUid());
-                post.setCourseTitle(cTitle);
-                post.setCourseSubTitle(cSubTitle);
-                post.setCourseDesc(cDesc);
-                post.setCourseCategory(cCategory);
-                post.setCourseSubCategory(cSubCategory);
-                post.setCourseLanguage(cLanguage);
-                post.setCourseLevel(cLevel);
-                post.setPostedAt(new Date().getTime());
-                post.setCourseContentList(example);
-
-                database.getReference().child("Posts")
-                        .push()
-                        .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(LaunchCourseActivity.this, "Posted Successfully", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                                Intent intent = new Intent(LaunchCourseActivity.this, InstructorActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
+                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Post post = new Post();
+                        post.setCoursePic(uri.toString());
+                        post.setPostedBy(mAuth.getUid());
+                        post.setCourseTitle(cTitle);
+                        post.setCourseSubTitle(cSubTitle);
+                        post.setCourseDesc(cDesc);
+                        post.setCourseCategory(cCategory);
+                        post.setCourseSubCategory(cSubCategory);
+                        post.setCourseLanguage(cLanguage);
+                        post.setCourseLevel(cLevel);
+                        post.setPostedAt(new Date().getTime());
+                        post.setCourseContentList(example);
+                        post.setCoursePrice(cPrice);
+                        database.getReference().child("Posts")
+                                .push()
+                                .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(LaunchCourseActivity.this, "Posted Successfully", Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
+                                        Intent intent = new Intent(LaunchCourseActivity.this, InstructorActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                    }
+                });
 
             }
         });
