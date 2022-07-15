@@ -16,13 +16,15 @@ public class Post {
     private String courseLevel;
     private String coursePrice;
     private List<CourseContent> courseContentList;
+    private List<Users> recruiters;
     private long postedAt;
     private int postLike;
     private int commentCount;
 
+
     public Post(String postId, String postedBy, String courseTitle, String courseSubTitle, String courseDesc,
                 String coursePic, String courseCategory, String courseSubCategory, String courseLanguage,
-                String courseLevel, String coursePrice, List<CourseContent> courseContentList, long postedAt, int postLike, int commentCount) {
+                String courseLevel, String coursePrice, List<CourseContent> courseContentList, List<Users> recruiters, long postedAt, int postLike, int commentCount) {
         this.postId = postId;
         this.postedBy = postedBy;
         this.courseTitle = courseTitle;
@@ -35,12 +37,21 @@ public class Post {
         this.courseLevel = courseLevel;
         this.coursePrice = coursePrice;
         this.courseContentList = courseContentList;
+        this.recruiters = recruiters;
         this.postedAt = postedAt;
         this.postLike = postLike;
         this.commentCount = commentCount;
     }
 
     public Post(){};
+
+    public List<Users> getRecruiters() {
+        return recruiters;
+    }
+
+    public void setRecruiters(List<Users> recruiters) {
+        this.recruiters = recruiters;
+    }
 
     public List<CourseContent> getCourseContentList() {
         return courseContentList;

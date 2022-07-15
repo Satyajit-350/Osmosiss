@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/my_course_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/business" />
+
+    <TextView
+        android:id="@+id/myCourse_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="Course Title"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/my_course_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/myCourse_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:paddingRight="4dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:maxLines="2"
+        android:text="Description"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/my_course_img"
+        app:layout_constraintTop_toBottomOf="@+id/myCourse_title" />
+
+    <ImageView
+        android:id="@+id/imageView_updated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toEndOf="@+id/my_course_img"
+        app:layout_constraintTop_toBottomOf="@+id/myCourse_desc"
+        app:srcCompat="@drawable/ic_fact_check_24" />
+
+    <ImageView
+        android:id="@+id/imageView_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView_updated"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_updated"
+        app:srcCompat="@drawable/ic_language_24" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:text="Last Updated"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_updated"
+        app:layout_constraintStart_toEndOf="@+id/imageView_updated"
+        app:layout_constraintTop_toTopOf="@+id/imageView_updated" />
+
+    <TextView
+        android:id="@+id/textView_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:text="Language"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_language"
+        app:layout_constraintStart_toEndOf="@+id/imageView_language"
+        app:layout_constraintTop_toTopOf="@+id/imageView_language" />
+
+    <TextView
+        android:id="@+id/textView_last_updated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:text="5/2022"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

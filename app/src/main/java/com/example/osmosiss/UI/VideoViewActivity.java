@@ -28,10 +28,9 @@ public class VideoViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String url = intent.getStringExtra("url");
+        String uri  = intent.getStringExtra("video");
 
-        Uri uri = Uri.parse(url);
-        binding.videoView.setVideoURI(uri);
+        binding.videoView.setVideoPath(uri);
 
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(binding.videoView);

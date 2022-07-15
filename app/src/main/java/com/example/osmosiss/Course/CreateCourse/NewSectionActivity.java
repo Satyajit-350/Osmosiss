@@ -75,9 +75,6 @@ public class NewSectionActivity extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO
                         String courseTitle = courseTitleEditText.getText().toString();
-//                        Vuri = videoUri.toString();
-//                        String pdfuri = pdfUri.toString();
-                        //also add pdf
                         listener.additem(courseTitle,Vuri,pdfuri);
                     }
                 });

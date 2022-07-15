@@ -6,6 +6,7 @@ public class Users {
     private String password;
     private String email;
     private int isAdmin;
+    private String profile_pic;
 
 
     public Users(String username, String password, String email, int isAdmin) {
@@ -16,6 +17,14 @@ public class Users {
     }
 
    public Users(){};
+
+    public String getProfile_pic() {
+        return profile_pic;
+    }
+
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
+    }
 
     public String getUsername() {
         return username;

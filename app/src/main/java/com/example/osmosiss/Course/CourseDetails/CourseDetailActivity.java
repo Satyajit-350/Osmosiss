@@ -14,6 +14,7 @@ import com.example.osmosiss.Adapters.AdapterCourseContent;
 import com.example.osmosiss.Adapters.LessonAdapter;
 import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.Models.Post;
+import com.example.osmosiss.Models.Users;
 import com.example.osmosiss.R;
 import com.example.osmosiss.databinding.ActivityCourseDetailBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,8 +52,14 @@ public class CourseDetailActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
+        binding.ratingBar.setRating(4.3f);
 
-        binding.courseItemDetails.setLayoutManager(new LinearLayoutManager(this));
+        binding.courseItemDetails.setLayoutManager(new LinearLayoutManager(this){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         binding.courseItemDetails.setHasFixedSize(true);
         adapter = new AdapterCourseContent(this,dataList);
         binding.courseItemDetails.setAdapter(adapter);
@@ -64,6 +71,23 @@ public class CourseDetailActivity extends AppCompatActivity {
                         Post post = snapshot.getValue(Post.class);
                         Picasso.get().load(post.getCoursePic()).placeholder(R.drawable.business).into(binding.imageView);
                         binding.textView5.setText(post.getCourseTitle());
+                        binding.textView9.setText(post.getCourseDesc());
+                        FirebaseDatabase.getInstance().getReference().child("Users")
+                                .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        Users users = snapshot.getValue(Users.class);
+                                        binding.textView15.setText(users.getUsername());
+                                        binding.textView25.setText(users.getUsername());
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                        binding.textView17.setText(post.getCourseLanguage());
+                        binding.textView20.setText(post.getCoursePrice());
                         arrayList = post.getCourseContentList();
                         for(int j=0;j<arrayList.size();j++){
                             dataList.add(arrayList.get(j));
@@ -76,6 +100,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
                     }
                 });
+
 
 
     }

@@ -1,7 +1,8 @@
 package com.example.osmosiss.Course.CreateCourse;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,15 +12,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.osmosiss.Fragments.InstructorHomeFragment;
-import com.example.osmosiss.Fragments.LearningFragment;
+import com.example.osmosiss.Adapters.TagReruiterAdapter;
 import com.example.osmosiss.InstructorActivity;
 import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.Models.Post;
+import com.example.osmosiss.Models.TagRecruiter;
+import com.example.osmosiss.Models.Users;
+import com.example.osmosiss.UI.SearchRecruitersDialog;
 import com.example.osmosiss.databinding.ActivityLaunchCourseBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,7 +35,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class LaunchCourseActivity extends AppCompatActivity {
+public class LaunchCourseActivity extends AppCompatActivity implements SearchRecruitersDialog.RecruiterDialogListener{
 
     private ActivityLaunchCourseBinding binding;
     private FirebaseDatabase database;
@@ -56,7 +57,8 @@ public class LaunchCourseActivity extends AppCompatActivity {
     private List<Uri> courseVideoUri,coursePdfUri;
     private List<String> courseContentTopic;
 
-    private int uploads = 0;
+    private List<Users> taggedRecruiters;
+    private TagReruiterAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class LaunchCourseActivity extends AppCompatActivity {
         courseVideoUri = new ArrayList<>();
         coursePdfUri = new ArrayList<>();
         courseContentTopic = new ArrayList<>();
+
+        taggedRecruiters = new ArrayList<>();
 
         database =FirebaseDatabase.getInstance();
         mAuth =FirebaseAuth.getInstance();
@@ -99,6 +103,18 @@ public class LaunchCourseActivity extends AppCompatActivity {
             }
         });
 
+        binding.addRecruiter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchRecruitersDialog dialog = new SearchRecruitersDialog();
+                dialog.show(getSupportFragmentManager(),"add Recruiters");
+            }
+        });
+
+        binding.tagRecyclerViewRecruiter.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        binding.tagRecyclerViewRecruiter.setHasFixedSize(true);
+        adapter = new TagReruiterAdapter(this,taggedRecruiters);
+        binding.tagRecyclerViewRecruiter.setAdapter(adapter);
     }
 
     private void getAllData() {
@@ -109,9 +125,6 @@ public class LaunchCourseActivity extends AppCompatActivity {
         String json = sharedPreferences.getString("dataNewCourse",null);
         HashMap<String, String> testHashMap2 = gson.fromJson(json, type);
 
-        //use values
-//        String toastString = testHashMap2.get("CourseTitle") + " | " + testHashMap2.get("CourseLanguage");
-//        Toast.makeText(this, toastString, Toast.LENGTH_LONG).show();
 
         cTitle = testHashMap2.get("CourseTitle");
         cSubTitle = testHashMap2.get("CourseSubTitle");
@@ -174,6 +187,7 @@ public class LaunchCourseActivity extends AppCompatActivity {
                         post.setCourseLevel(cLevel);
                         post.setPostedAt(new Date().getTime());
                         post.setCourseContentList(example);
+                        post.setRecruiters(taggedRecruiters);
                         post.setCoursePrice(cPrice);
                         database.getReference().child("Posts")
                                 .push()
@@ -192,84 +206,14 @@ public class LaunchCourseActivity extends AppCompatActivity {
 
             }
         });
-//        //upload videos
-//        dialog.show();
-//        for(uploads=0;uploads<courseVideoUri.size();uploads++){
-//
-//            reference1.putFile(courseVideoUri.get(uploads)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                   reference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                       @Override
-//                       public void onSuccess(Uri uri) {
-//                           String url = String.valueOf(uri);
-//                           SendVideos(url);
-//                       }
-//                   });
-//                }
-//            });
-//        }
-//        //uploads pdfs
-//        dialog.show();
-//        for(uploads=0;uploads<coursePdfUri.size();uploads++){
-//
-//            reference2.putFile(coursePdfUri.get(uploads)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    reference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            String url = String.valueOf(uri);
-//                            SendPdf(url);
-//                        }
-//                    });
-//                }
-//            });
-//        }
-//        //uploads course content titles
-//        dialog.show();
-//        database.getReference().child("Posts")
-//                .child("course Topics")
-//                .setValue(courseContentTopic).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            dialog.dismiss();
-//                            Toast.makeText(LaunchCourseActivity.this, "All data loaded", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
 
     }
 
-    private void SendPdf(String url) {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("pdf", url);
-        database.getReference().child("Posts")
-                .push()
-                .setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        dialog.dismiss();
-                        coursePdfUri.clear();
-                        Toast.makeText(LaunchCourseActivity.this, "Videos uploaded", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void SendVideos(String url) {
-        HashMap<String, String> hashMap = new HashMap<>();
-        int i = 0;
-        hashMap.put("video"+i, url);
-        database.getReference().child("Posts")
-                .push()
-                .setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        dialog.dismiss();
-                        courseVideoUri.clear();
-                        Toast.makeText(LaunchCourseActivity.this, "Videos uploaded", Toast.LENGTH_SHORT).show();
-                    }
-                });
+    @Override
+    public void addRecruiter(List<Users> recruiters) {
+        for(Users data: recruiters){
+            taggedRecruiters.add(data);
+        }
+        adapter.notifyDataSetChanged();
     }
 }

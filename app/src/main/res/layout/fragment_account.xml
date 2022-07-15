@@ -262,7 +262,7 @@
                                 android:fontFamily="@font/nunito_sans_bold"
                                 android:gravity="center"
                                 android:padding="13dp"
-                                android:text="Review"
+                                android:text="Projects"
                                 android:textAllCaps="true"
                                 android:textColor="#EEEEEE"
                                 android:textSize="14sp"
@@ -519,7 +519,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="20dp"
-                                            android:text="sanskar@theindianappguy.com"
+                                            android:text="satyabiswal350@gmail.com"
                                             android:textSize="15sp" />
                                     </LinearLayout>
 
@@ -541,7 +541,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="20dp"
-                                            android:text="Leeds, United Kingdom"
+                                            android:text="India"
                                             android:textSize="15sp" />
                                     </LinearLayout>
 

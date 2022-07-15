@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.osmosiss.Adapters.MyCourseAdapter;
 import com.example.osmosiss.Course.CreateCourse.AddCourseActivity;
 import com.example.osmosiss.Models.Post;
 import com.example.osmosiss.Models.Users;
@@ -30,7 +32,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class InstructorPostFragment extends Fragment {
@@ -41,6 +45,9 @@ public class InstructorPostFragment extends Fragment {
     private FirebaseDatabase database;
     private FirebaseStorage storage;
     private ProgressDialog dialog;
+
+    private List<Post> myArrayList;
+    private MyCourseAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,11 +64,21 @@ public class InstructorPostFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding =  FragmentInstructorPostBinding.inflate(getLayoutInflater(), container, false);
 
+        myArrayList = new ArrayList<>();
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setTitle("Post Uploading");
         dialog.setMessage("Please wait...");
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
+
+        binding.myCourseRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.myCourseRV.setHasFixedSize(true);
+
+        adapter = new MyCourseAdapter(getContext(),myArrayList);
+        binding.myCourseRV.setAdapter(adapter);
+
+        getData();
+
 
         //get the details of the current user
         database.getReference().child("Users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -78,75 +95,6 @@ public class InstructorPostFragment extends Fragment {
             }
         });
 
-        binding.editTextDesc.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String description = binding.editTextDesc.getText().toString();
-                if(!description.isEmpty()){
-                    binding.postButton.setEnabled(true);
-                }else{
-                    binding.postButton.setEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        binding.imageSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent,200);
-            }
-        });
-
-        binding.postButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-                final StorageReference reference = storage.getReference().child("posts")
-                        .child(mAuth.getUid())
-                        .child(new Date().getTime()+"");
-
-                reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Post post = new Post();
-                                post.setCoursePic(uri.toString());
-                                post.setPostedBy(mAuth.getUid());
-                                post.setCourseTitle(binding.editTextCourseName.getText().toString());
-                                post.setCourseDesc(binding.editTextDesc.getText().toString());
-                                post.setPostedAt(new Date().getTime());
-
-                                database.getReference().child("Posts")
-                                        .push()
-                                        .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Toast.makeText(getContext(), "Posted Successfully", Toast.LENGTH_SHORT).show();
-                                                dialog.dismiss();
-                                            }
-                                        });
-                            }
-                        });
-                    }
-                });
-
-            }
-        });
 
         binding.createCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,14 +106,25 @@ public class InstructorPostFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(data.getData()!=null){
-            uri = data.getData();
-            binding.imageView5.setVisibility(View.VISIBLE);
-            binding.imageView5.setImageURI(uri);
-            binding.postButton.setEnabled(true);
-        }
+    private void getData() {
+
+        database.getReference().child("Posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myArrayList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Post post = dataSnapshot.getValue(Post.class);
+                    if(mAuth.getUid().equals(post.getPostedBy())){
+                        myArrayList.add(post);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
 }

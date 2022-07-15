@@ -5,14 +5,16 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.osmosiss.MainActivity2;
 import com.example.osmosiss.Models.CourseContent;
 import com.example.osmosiss.R;
+import com.example.osmosiss.UI.VideoViewActivity;
 
 import java.util.List;
 
@@ -29,22 +31,23 @@ public class AdapterCourseContent extends RecyclerView.Adapter<AdapterCourseCont
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_content,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_list,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CourseContent courseContent = list.get(position);
-        holder.textView.setText(courseContent.getTitle());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.textViewTitle.setText(courseContent.getTitle());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MainActivity2.class);
+                Intent intent = new Intent(context, VideoViewActivity.class);
                 intent.putExtra("video",courseContent.getVideoUri());
                 context.startActivity(intent);
             }
         });
+        holder.contentNumber.setText("0"+Integer.parseInt(String.valueOf(position+1)));
     }
 
     @Override
@@ -54,12 +57,15 @@ public class AdapterCourseContent extends RecyclerView.Adapter<AdapterCourseCont
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView textView;
+        private TextView textViewTitle,contentNumber;
+        private ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            textView = itemView.findViewById(R.id.course_title_TV_item);
+            textViewTitle = itemView.findViewById(R.id.content_title);
+            contentNumber = itemView.findViewById(R.id.content_number);
+            imageView = itemView.findViewById(R.id.imageView3);
         }
     }
 }
