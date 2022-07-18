@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="#FAF9F6">
+
+    <EditText
+        android:id="@+id/school_nameTV"
+        android:textColor="#424242"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Institute Name"
+        android:background="@drawable/sharp_rect_02"
+        android:textColorHint="#bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/Degree_nameTV"
+        android:textColor="#424242"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Degree(eg. Bachelors)"
+        android:background="@drawable/sharp_rect_02"
+        android:textColorHint="#bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/Start_dateTV"
+            android:textColor="#424242"
+            android:padding="10dp"
+            android:hint="Start Date"
+            android:background="@drawable/sharp_rect_02"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/startImg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baseline_calendar_today_24"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/End_dateTV"
+            android:textColor="#424242"
+            android:padding="10dp"
+            android:hint="End Date"
+            android:background="@drawable/sharp_rect_02"
+            android:textColorHint="#bdbdbd"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/endImg"
+            android:layout_width="20dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_baseline_calendar_today_24" /></LinearLayout>
+    <EditText
+        android:id="@+id/Grade_TV"
+        android:textColor="#424242"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Grade"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sharp_rect_02"
+        android:textColorHint="#bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

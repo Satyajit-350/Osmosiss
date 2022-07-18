@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="#FAF9F6"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/titleTV"
+        android:textColor="#424242"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:hint="New Skill (eg. Java,C++,etc.)"
+        android:background="@drawable/sharp_rect_02"
+        android:textColorHint="#bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

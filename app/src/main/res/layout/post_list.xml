@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileIV"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -30,7 +30,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/sharp_circle"
                 android:backgroundTint="#bdbdbd"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/user_img" />
 
             <TextView
@@ -42,28 +42,30 @@
                 android:layout_toRightOf="@id/profileIV"
                 android:text="Full Name"
                 android:textColor="#212121" />
+
             <TextView
                 android:id="@+id/descriptionTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/profileIV"
                 android:layout_below="@id/posted_by"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="40dp"
+                android:layout_toRightOf="@id/profileIV"
                 android:maxLength="35"
-                android:textColor="#bdbdbd"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text="description A|| description B|"
-                />
+                android:textColor="#bdbdbd" />
+
             <TextView
                 android:id="@+id/TimeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/descriptionTV"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/profileIV"
-                android:layout_below="@id/descriptionTV"
-                android:textColor="#bdbdbd"
                 android:text="6h"
-                />
+                android:textColor="#bdbdbd" />
 
             <ImageView
                 android:id="@+id/course_pic"

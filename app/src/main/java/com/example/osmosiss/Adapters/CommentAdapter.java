@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -54,7 +55,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Users users = snapshot.getValue(Users.class);
                         //set profile picture
+                        Picasso.get().load(users.getProfile_pic()).placeholder(R.drawable.user_img).into(holder.comment_pic);
                         holder.commented_person_name.setText(users.getUsername());
+                        holder.commented_person_prof.setText(users.getProfession());
                     }
 
                     @Override
@@ -88,47 +91,4 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         }
     }
 
-
 }
-
-
-//    @Override
-//    public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
-//        Comment comment = commentList.get(position);
-//        holder.comment_txt.setText(comment.getCommentBody());
-//        String time = TimeAgo.using(comment.getCommentedAt());
-//        holder.comment_time.setText(time);
-//
-//        FirebaseDatabase.getInstance().getReference()
-//                .child("Users").child(comment.getCommentedBy())
-//                .addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        Users users = snapshot.getValue(Users.class);
-//                        //set profile picture
-//                        holder.commented_person_name.setText(users.getUsername());
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//    }
-
-//    private CircleImageView comment_pic;
-//    private TextView commented_person_name,commented_person_prof;
-//    private TextView comment_time;
-//    private TextView comment_txt;
-//
-//    public CommentViewHolder(@NonNull View itemView) {
-//        super(itemView);
-//
-//        comment_pic = itemView.findViewById(R.id.comment_profile_pic);
-//        commented_person_name = itemView.findViewById(R.id.commented_by);
-//        commented_person_prof = itemView.findViewById(R.id.commented_user_profession);
-//        comment_time = itemView.findViewById(R.id.comment_time);
-//        comment_txt = itemView.findViewById(R.id.comment_data);
-//    }
-//}
-//}

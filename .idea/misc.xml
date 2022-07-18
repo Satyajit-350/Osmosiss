@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable-v24/ic_baseline_calendar_today_24.xml" value="0.162" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/active_send_bg.xml" value="0.1755" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/backgroung_search.xml" value="0.1715" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/drawable/bg.xml" value="0.1755" />
@@ -41,6 +42,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_course.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_course_detail.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_course_price_set.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_edit_profile.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_instructor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_intro.xml" value="0.25416666666666665" />
@@ -54,12 +56,19 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_splash_screen.xml" value="0.11481481481481481" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/activity_video_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/add_new_education.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/add_new_experience.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/add_new_project.xml" value="0.253125" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/add_new_skills.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/bottom_layout.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/category_list_items.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/comment_sample.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/course_content.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/course_list.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/data_list.xml" value="0.271484375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/education_items.xml" value="0.253125" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/experience_items.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/experience_items_rv.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_featured.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
@@ -81,8 +90,10 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/no_internet.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/person_layout.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/post_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/projects_items.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/recruiter_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/shimmer_layout.xml" value="0.253125" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/skills_items.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/top_search_items.xml" value="0.253125" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/layout/upload_data.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Osmosiss/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />

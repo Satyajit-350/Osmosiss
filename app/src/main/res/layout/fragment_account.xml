@@ -93,6 +93,7 @@
                             android:padding="16dp">
 
                             <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/user_profile_pic"
                                 android:layout_width="90dp"
                                 android:layout_height="90dp"
                                 android:scaleType="centerCrop"
@@ -104,6 +105,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/user_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
@@ -114,95 +116,17 @@
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/user_profession"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/nunito_sans_bold"
                                     android:text="Android Developer"
+                                    android:layout_gravity="center"
                                     android:textSize="14sp" />
 
 
                             </LinearLayout>
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:paddingBottom="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:padding="8dp">
-
-                                    <ImageView
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:background="@drawable/circular_grey_bordersolid"
-                                        android:padding="10dp"
-                                        android:src="@drawable/tickinsidecircle" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="97%"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="2dp"
-                                            android:text="@string/job_success"
-                                            android:textSize="12sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:padding="8dp">
-
-                                    <ImageView
-                                        android:layout_width="35dp"
-                                        android:layout_height="35dp"
-                                        android:background="@drawable/circular_grey_bordersolid"
-                                        android:padding="10dp"
-                                        android:src="@drawable/star" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="4.8/5"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="2dp"
-                                            android:text="@string/ratings"
-                                            android:textSize="12sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                            </LinearLayout>
                         </LinearLayout>
 
                         <!--Option Bar-->
@@ -308,6 +232,7 @@
                                             android:layout_weight="1" />
 
                                         <TextView
+                                            android:id="@+id/edit_button1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginEnd="10dp"
@@ -318,6 +243,7 @@
                                     </LinearLayout>
 
                                     <TextView
+                                        android:id="@+id/about_me"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="10dp"
@@ -353,6 +279,7 @@
                                         android:layout_weight="1" />
 
                                     <TextView
+                                        android:id="@+id/edit_button2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="10dp"
@@ -381,6 +308,7 @@
                                             android:src="@drawable/ic_call_24dp" />
 
                                         <TextView
+                                            android:id="@+id/user_phone"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="20dp"
@@ -405,6 +333,7 @@
                                             android:src="@drawable/ic_email_24dp" />
 
                                         <TextView
+                                            android:id="@+id/user_mail"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="20dp"
@@ -429,6 +358,7 @@
                                             android:src="@drawable/ic_location_24dp" />
 
                                         <TextView
+                                            android:id="@+id/user_location"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginLeft="20dp"
@@ -467,6 +397,7 @@
 
 
                                     <TextView
+                                        android:id="@+id/edit_button3"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Edit"
@@ -477,76 +408,42 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:orientation="vertical">
+                                    android:layout_marginTop="10dp">
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center_vertical"
-                                        android:paddingRight="8dp">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:background="@drawable/circular_grey_bordersolid"
-                                            android:padding="10dp"
-                                            android:src="@drawable/paintbrush" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="20dp"
-                                            android:text="Expert in Photoshop, Adobe XD"
-                                            android:textSize="15sp" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
-                                        android:gravity="center_vertical"
-                                        android:paddingRight="8dp">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:background="@drawable/circular_grey_bordersolid"
-                                            android:padding="10dp"
-                                            android:src="@drawable/ic_email_24dp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="20dp"
-                                            android:text="satyabiswal350@gmail.com"
-                                            android:textSize="15sp" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
-                                        android:gravity="center_vertical"
-                                        android:paddingRight="8dp">
-
-                                        <ImageView
-                                            android:layout_width="40dp"
-                                            android:layout_height="40dp"
-                                            android:background="@drawable/circular_grey_bordersolid"
-                                            android:padding="10dp"
-                                            android:src="@drawable/ic_location_24dp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="20dp"
-                                            android:text="India"
-                                            android:textSize="15sp" />
-                                    </LinearLayout>
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/profile_skillsRV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        tools:listitem="@layout/skills_items"
+                                        tools:itemCount="3"/>
 
                                 </LinearLayout>
                             </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/education"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Education"
+                                android:fontFamily="@font/nunito_sans_bold"
+                                android:textSize="18sp"
+                                android:padding="8sp"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/profile_education_rv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/education_items"
+                                tools:itemCount="3"/>
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -557,206 +454,20 @@
                             android:layout_marginBottom="8dp"
                             android:orientation="vertical">
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
+                                android:text="Experience"
+                                android:fontFamily="@font/nunito_sans_bold"
+                                android:textSize="18sp"
+                                android:padding="8sp"/>
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:padding="6dp"
-                                        android:src="@drawable/playstore" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="Android Developer"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="at TheIndianAppGuy"
-                                            android:textSize="12sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="9dp"
-                                        android:layout_height="9dp"
-                                        android:padding="1dp"
-                                        android:src="@drawable/circleyellowfil" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="5dp"
-                                        android:text="Sep 2010 - Jan 2013"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/profile_experience_rv"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:padding="6dp"
-                                        android:src="@drawable/android" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="Android Developer"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="at TheIndianAppGuy"
-                                            android:textSize="12sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="9dp"
-                                        android:layout_height="9dp"
-                                        android:padding="1dp"
-                                        android:src="@drawable/circleyellowfil" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="5dp"
-                                        android:text="Sep 2010 - Jan 2013"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:padding="6dp"
-                                        android:src="@drawable/search" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="Android Developer"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="at TheIndianAppGuy"
-                                            android:textSize="12sp" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:gravity="center_vertical">
-
-                                    <ImageView
-                                        android:layout_width="9dp"
-                                        android:layout_height="9dp"
-                                        android:padding="1dp"
-                                        android:src="@drawable/circleyellowfil" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="5dp"
-                                        android:text="Sep 2010 - Jan 2013"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                            </LinearLayout>
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/experience_items"
+                                tools:itemCount="3"/>
 
                         </LinearLayout>
 
@@ -766,170 +477,12 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-
-                            <LinearLayout
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/profile_project_rv"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <androidx.cardview.widget.CardView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        app:cardCornerRadius="6dp"
-                                        app:cardElevation="0dp">
-
-                                        <ImageView
-                                            android:layout_width="70dp"
-                                            android:layout_height="70dp"
-                                            android:scaleType="centerCrop"
-                                            android:src="@drawable/person1" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:maxLines="3"
-                                            android:text="@string/samplereview"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:fontFamily="@font/nunito_sans_bold"
-                                            android:text="Saswat Tiwari"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <androidx.cardview.widget.CardView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        app:cardCornerRadius="6dp"
-                                        app:cardElevation="0dp">
-
-                                        <ImageView
-                                            android:layout_width="70dp"
-                                            android:layout_height="70dp"
-                                            android:scaleType="centerCrop"
-                                            android:src="@drawable/person2" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:maxLines="3"
-                                            android:text="@string/samplereview"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:text="Mr Sk TATA"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="8dp"
-                                android:background="@drawable/circularbordersolid"
-                                android:orientation="horizontal"
-                                android:padding="20dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:gravity="center_vertical">
-
-                                    <androidx.cardview.widget.CardView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        app:cardCornerRadius="6dp"
-                                        app:cardElevation="0dp">
-
-                                        <ImageView
-                                            android:layout_width="70dp"
-                                            android:layout_height="70dp"
-                                            android:scaleType="centerCrop"
-                                            android:src="@drawable/person3" />
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:maxLines="3"
-                                            android:text="@string/samplereview"
-                                            android:textSize="14sp" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="3dp"
-                                            android:text="Shikha Tiwari"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </LinearLayout>
-                                </LinearLayout>
-
-
-                            </LinearLayout>
+                                android:layout_height="match_parent"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/projects_items"/>
 
                         </LinearLayout>
 
@@ -949,7 +502,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/signOut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -1103,3 +656,4 @@
     </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
+

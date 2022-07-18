@@ -18,12 +18,15 @@
         android:theme="@style/Theme.Osmosiss"
         tools:targetApi="31">
         <activity
+            android:name=".UI.EditProfileActivity"
+            android:exported="true" >
+        </activity>
+        <activity
             android:name=".Course.CourseDetails.CourseDetailActivity"
             android:exported="false" />
         <activity
             android:name=".Course.CreateCourse.LaunchCourseActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Course.CreateCourse.CoursePriceSetActivity"
             android:exported="false" />
@@ -39,12 +42,14 @@
         <activity
             android:name=".UI.SplashScreenActivity"
             android:exported="true">
-<!--            intent filter-->
+
+            <!-- intent filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".UI.NoInternetActivity"

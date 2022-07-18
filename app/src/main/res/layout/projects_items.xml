@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/circularbordersolid"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="8dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/project_name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="Project Name"
+        android:textColor="#424242"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/date_project1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/project_name1"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:layout_marginLeft="20dp"
+        android:text="month YYYY"
+        android:textColor="#bdbdbd" />
+
+    <TextView
+        android:id="@+id/hipen3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" - "
+        android:fontFamily="@font/nunito_sans_bold"
+        android:layout_below="@id/project_name1"
+        android:layout_toRightOf="@+id/date_project1"/>
+
+    <TextView
+        android:id="@+id/date_project2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/project_name1"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:layout_toRightOf="@+id/hipen3"
+        android:text="month YYYY"
+        android:textColor="#bdbdbd" />
+
+    <TextView
+        android:id="@+id/link_project1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Github Link"
+        android:textColor="#0288d1"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/project_detail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_project1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:text="Project description"
+        android:textColor="#424242"
+        android:visibility="visible" />
+
+</RelativeLayout>
